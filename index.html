@@ -27,7 +27,7 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      background: #111;
+    background:#0d0d0d;
       font-family: Arial, sans-serif;
     }
 
@@ -56,6 +56,23 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
+
+    .menu-container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:20px 10px;
+}
+
+.menu-page{
+    width:100%;
+    display:block;
+    margin:0 auto 25px;
+    border-radius:16px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.4),
+        0 0 1px rgba(255,255,255,.1);
+}
 
     @keyframes spin {
       0% {
@@ -111,9 +128,15 @@
     <div class="spinner"></div>
   </div>
 
-  <div class="pdf-container">
-    <embed id="pdfViewer" src="Menu.pdf" type="application/pdf" />
-  </div>
+<div class="menu-container">
+
+  <img src="Menu-Page-1.png" alt="Menu Page 1" class="menu-page">
+  <img src="Menu-Page-2.png" alt="Menu Page 2" class="menu-page">
+  <img src="Menu-Page-3.png" alt="Menu Page 3" class="menu-page">
+  <img src="Menu-Page-4.png" alt="Menu Page 4" class="menu-page">
+  <img src="Menu-Page-5.png" alt="Menu Page 5" class="menu-page">
+
+</div>
 
   <script>
     const pdfViewer = document.getElementById('pdfViewer');
