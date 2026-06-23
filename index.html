@@ -123,14 +123,18 @@
 </head>
 <body>
 
-  <div class="loader" id="loader">
-    <img src="Logo.PNG" alt="Logo" />
+<div class="loader" id="loader">
+    <img src="Logo.PNG" alt="Question MART & CAFE">
     <div class="spinner"></div>
-  </div>
+</div>
+
+<div class="logo">
+    <img src="Logo.PNG" alt="Question MART & CAFE">
+</div>
 
 <div class="menu-container">
 
-  <img src="Menu-Page-1.png" alt="Menu Page 1" class="menu-page">
+ <img src="Menu-Page-1.png" alt="Menu Page 1" class="menu-page">
   <img src="Menu-Page-2.png" alt="Menu Page 2" class="menu-page">
   <img src="Menu-Page-3.png" alt="Menu Page 3" class="menu-page">
   <img src="Menu-Page-4.png" alt="Menu Page 4" class="menu-page">
@@ -138,20 +142,23 @@
 
 </div>
 
-  <script>
-    const pdfViewer = document.getElementById('pdfViewer');
-    const loader = document.getElementById('loader');
+<script>
+window.onload = function () {
 
-    pdfViewer.src = 'Menu.pdf';
+    setTimeout(function () {
 
-    setTimeout(() => {
-      loader.style.opacity = '0';
+        const loader = document.getElementById('loader');
 
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 400);
+        loader.style.opacity = '0';
+
+        setTimeout(function () {
+            loader.style.display = 'none';
+        }, 400);
+
     }, 3000);
-  </script>
+
+};
+</script>
 
 </body>
 </html>
