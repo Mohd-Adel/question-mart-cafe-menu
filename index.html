@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question MART & CAFE Menu</title>
+
+  <!-- Social preview tags (kept identical in meaning to the original site,
+       image URLs made absolute so link previews render correctly) -->
+  <meta property="og:title" content="Question MART & CAFE" />
+  <meta property="og:description" content="Check our full café menu online." />
+  <meta property="og:image" content="https://mohd-adel.github.io/menu-site/images/logo/Logo.PNG" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mohd-adel.github.io/menu-site/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Question MART & CAFE" />
+  <meta name="twitter:description" content="Check our full café menu online." />
+  <meta name="twitter:image" content="https://mohd-adel.github.io/menu-site/images/logo/Logo.PNG" />
+
+  <!-- Cairo: one typeface that natively supports both Latin and Arabic —
+       used everywhere on this page so English and Arabic feel like one identity.
+       Inter is the utility face for the small print. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="lang-select">
+
+  <main class="select-screen">
+    <div class="select-card">
+
+      <!-- Signature element: a simple brass cup-and-steam mark.
+           Steam gently drifts on load; respects reduced-motion. -->
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path class="steam steam-1" d="M38 30 C34 24, 42 20, 38 14" />
+        <path class="steam steam-2" d="M50 30 C46 24, 54 20, 50 14" />
+        <path class="steam steam-3" d="M62 30 C58 24, 66 20, 62 14" />
+        <path class="cup" d="M28 40 H68 V60 C68 71, 60 79, 48 79 C36 79, 28 71, 28 60 Z" />
+        <path class="handle" d="M68 46 C80 46, 80 64, 68 64" />
+        <line class="saucer" x1="20" y1="82" x2="76" y2="82" />
+      </svg>
+
+      <img class="logo" src="images/logo/Logo.PNG" alt="Question MART & CAFE logo" />
+
+      <h1 class="cafe-name">Question MART &amp; CAFE</h1>
+
+      <!-- Language choice: this is the entire job of this page -->
+      <div class="lang-buttons" role="group" aria-label="Choose your language / اختر لغتك">
+        <button type="button" class="lang-btn" data-lang="en">
+          <span class="flag" aria-hidden="true">🇺🇸</span>
+          <span class="lang-label">English</span>
+        </button>
+
+        <button type="button" class="lang-btn" data-lang="ar">
+          <span class="flag" aria-hidden="true">🇪🇬</span>
+          <span class="lang-label" dir="rtl">العربية</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Language selection: store the choice, then hand off to menu.html.
+    // menu.html reads this same key ('menuLang') to decide which
+    // image folder to render.
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var chosenLang = btn.getAttribute('data-lang'); // 'en' or 'ar'
+        localStorage.setItem('menuLang', chosenLang);
+        window.location.href = 'menu.html';
+      });
+    });
+  </script>
+
+</body>
+</html>

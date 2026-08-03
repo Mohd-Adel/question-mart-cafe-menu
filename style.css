@@ -1,0 +1,335 @@
+/* =========================================================
+   Question MART & CAFE — shared stylesheet
+   Used by both index.html (language select) and menu.html
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Colors: espresso-dark background, warm brass accent, cream text.
+     Chosen to feel like a coffee shop at night rather than a generic
+     dark-mode dashboard. */
+  --bg: #0d0d0d;
+  --surface: #17120d;
+  --surface-2: #201811;
+  --border: rgba(201, 164, 76, 0.25);
+  --gold: #c9a44c;
+  --gold-bright: #e8c878;
+  --cream: #f3ead9;
+  --muted: #9c8f7a;
+
+  /* Type: Cairo (display) supports Arabic + Latin natively — one
+     typeface carries both languages of the brand. Inter is the
+     utility face for small print. */
+  --font-display: "Cairo", "Inter", sans-serif;
+  --font-body: "Inter", "Cairo", sans-serif;
+
+  --radius: 16px;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+  width: 100%;
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* =========================================================
+   Loader (shared by menu.html)
+   ========================================================= */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  z-index: 9999;
+  transition: opacity 0.4s ease;
+}
+
+.loader-logo {
+  width: 96px;
+  border-radius: 12px;
+}
+
+.spinner {
+  width: 46px;
+  height: 46px;
+  border: 4px solid rgba(201, 164, 76, 0.2);
+  border-top: 4px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-text {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   Language select screen (index.html)
+   ========================================================= */
+.select-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  /* subtle warm vignette so the flat black isn't completely dead */
+  background:
+    radial-gradient(circle at 50% 15%, rgba(201, 164, 76, 0.08), transparent 55%),
+    var(--bg);
+}
+
+.select-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 40px 28px 32px;
+  text-align: center;
+}
+
+/* Signature brand mark: brass cup with drifting steam */
+.brand-mark {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  overflow: visible;
+}
+
+.brand-mark .cup,
+.brand-mark .handle,
+.brand-mark .saucer {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-mark .steam {
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.85;
+  transform-origin: center;
+  animation: drift 3.2s ease-in-out infinite;
+}
+
+.brand-mark .steam-2 {
+  animation-delay: 0.4s;
+}
+
+.brand-mark .steam-3 {
+  animation-delay: 0.8s;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 0.4;
+  }
+}
+
+.logo {
+  width: 128px;
+  margin: 0 auto 20px;
+  border-radius: 14px;
+}
+
+.cafe-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+.lang-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible {
+  border-color: var(--gold);
+  background: #261c12;
+  transform: translateY(-1px);
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
+.lang-btn:active {
+  transform: translateY(0);
+}
+
+.flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* =========================================================
+   Menu page (menu.html)
+   ========================================================= */
+.menu-page-body {
+  overflow-x: hidden;
+}
+
+.home-link {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1000;
+}
+
+.home-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.top-bar {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1000;
+}
+
+.lang-switch-btn {
+  background: var(--surface);
+  color: var(--cream);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.lang-switch-btn:hover,
+.lang-switch-btn:focus-visible {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.menu-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 70px 10px 30px;
+  /* fades in once images are ready; toggled from menu.js */
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.menu-container.is-visible {
+  opacity: 1;
+}
+
+.menu-page-img {
+  width: 100%;
+  display: block;
+  margin: 0 auto 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  background: var(--surface); /* placeholder color while decoding */
+}
+
+/* Right-to-left tweaks when Arabic is active */
+html[dir="rtl"] .home-link {
+  left: auto;
+  right: 14px;
+}
+
+html[dir="rtl"] .top-bar {
+  right: auto;
+  left: 14px;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .brand-mark .steam {
+    animation: none;
+  }
+  .lang-btn,
+  .lang-switch-btn,
+  .menu-container {
+    transition: none;
+  }
+}
+
+/* ---------- Slightly larger screens ---------- */
+@media (min-width: 480px) {
+  .select-card {
+    padding: 48px 36px 40px;
+  }
+
+  .cafe-name {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question MART & CAFE Menu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;900&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="menu-page-body">
+
+  <!-- Loader: same concept as the original site (logo + spinner),
+       but menu.js now hides it only once the real images have
+       loaded, instead of a blind fixed timer. -->
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <img src="images/logo/Logo.PNG" alt="" class="loader-logo" />
+    <div class="spinner" aria-hidden="true"></div>
+    <p class="loader-text">Loading your menu…</p>
+  </div>
+
+  <!-- Small logo, top-left: doubles as "back to language screen" -->
+  <a href="index.html" class="home-link" aria-label="Choose a different language">
+    <img src="images/logo/Logo.PNG" alt="" class="home-logo" />
+  </a>
+
+  <!-- Language switch: always shows the OTHER language,
+       i.e. what you'll get if you tap it -->
+  <div class="top-bar">
+    <button type="button" id="langSwitch" class="lang-switch-btn" aria-label="Switch language"></button>
+  </div>
+
+  <!-- Menu images are injected here by menu.js -->
+  <main class="menu-container" id="menuContainer" aria-live="polite"></main>
+
+  <script src="menu.js"></script>
+</body>
+</html>
